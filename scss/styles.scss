@@ -1,0 +1,641 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i&display=swap');
+
+@import 'normalize';
+@import 'mixins';
+@import 'varibles';
+@import 'slick';
+
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100%;
+    font: 1.5rem/1.6 $main-text, sans-serif;
+    color: $gray-text;
+}
+
+a{
+    text-decoration: none;
+}
+
+h2,h3,h4,h5{
+    text-transform: uppercase;
+}
+
+h2{
+    margin: 100px 50px;
+}
+
+h3{
+    margin:  20px 0 ;
+}
+
+h4{
+    margin: 60px 20px 5px;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1170px;
+    width: 90%;
+
+    &--small{
+        max-width: 770px;
+    }
+
+    &--slider{
+        max-width: 1200px;
+    }
+}
+
+
+header{
+    position: absolute;
+    top: 45px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.logo{
+    margin-right: 10px;
+}
+
+.nav{
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & a{
+        color: $light-color;
+        
+        transition: all .25s ease-in-out;
+        
+        @include hover{
+            opacity: .7;
+
+            .dot, .dot a {
+                background-color: $light-color;
+                    
+            }
+        }
+    }
+}
+
+.menu{
+    padding: 0;
+    list-style: none;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    @media screen and (max-width: 1370px) {
+        width: 50%;
+    }
+
+    &__link{
+        @include text($light-color, $subtitle, 1.4rem, 400, 1.6);
+        padding: 1rem;
+        border-bottom: 2px solid transparent;
+        text-transform: uppercase; 
+    }
+}
+
+.social{ 
+    padding: 0;
+    
+    &__item{
+        display: inline-block;
+        margin-left: 2rem;
+        @media screen and (max-width: 1105px) {
+            margin-left: 1rem;
+        }
+       
+        &--scroll{
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+            bottom: 50px;
+        }
+
+       }
+    &__link{
+        color:$light-color;
+        font-size: 1.2em;
+        display: inline-block;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.349);
+        padding: 3px;
+        text-align: center;
+        @media screen and (max-width: 1330px) {
+            width:36px;
+            height: 36px;
+            padding: 2px;
+        }
+        @media screen and (max-width: 1200px) {
+            width:35px;
+            height: 35px;
+            padding: 2px;
+        }
+        @media screen and (max-width: 1100px) {
+            
+            padding: 1px;
+        }
+
+        @media screen and (max-width: 1050px) {
+            font-size: 1em;
+            width: 32px;
+            height: 32px;
+        }
+        @include hover{
+            opacity: .7;
+        }
+
+        &--footer{
+            width: 38px;
+            height: 38px;
+            font-size: 1.2em;
+            padding: 3px;
+        }
+    }
+}
+
+section{
+    position: relative;
+}
+
+.cover{
+    background-size: cover;
+    background-position: center;
+    padding: 100px 60px;
+    
+    &--vh{
+        min-height: 100vh;  
+    }
+    
+    &--flex{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__content{
+        text-align: center;
+        margin: 20px auto;
+    }
+
+    &__title{
+        @include text($light-color, $title, 8rem, 400, 1);
+        margin: 40px auto;
+    }
+
+    &__subtitle{
+        @include text($light-color, $text, 4.4rem, 400, 1);
+        @include line();
+        text-align: center;
+        &--40{
+            margin-top: 40px;
+        }
+        &--dark{
+            color: $gray-title;
+            @include line($gray-title)
+        }
+    }
+
+    &__text{
+        @include text($light-color, $subtitle, 1.8rem, 400, 1.2);
+    }
+
+}
+
+.slider{
+    position: relative;
+
+    &__dots{
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        position: absolute;
+        flex-direction: column;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        text-align: center;
+        padding: 0;
+
+        &--vert{
+            top: 50%;
+            right: 40px;
+            li{
+                button{
+                    margin: 20px 0;
+                }
+            }
+        }
+    
+        &--gor{
+            bottom: 80px;
+            left: 50%;
+            flex-direction: row;
+            justify-content: space-between;
+            li{
+                button{
+                    margin: 0 20px;
+                }
+            }
+        }
+        li{
+            display: inline-block;
+            button{
+                
+                padding: 0;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                border: 1px solid $light-color;
+                background-color: transparent;
+                font-size: 0;
+                
+               
+                @include hover{        
+                    background-color: $light-color;
+                }
+            }
+            &.slick-active button {
+                border-color: $light-color;
+                background-color: $light-color;
+            }
+        }
+    }
+}
+
+.dots,
+a.flex{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.dot,
+.dot a{
+    display: inline-block;
+    margin: 20px 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid $light-color;
+    background-color: transparent;
+    font-size: 0;
+    
+    @include hover{        
+        background-color: $light-color;
+    }
+}
+
+.arrow{
+    position: absolute;
+    
+    text-align: center;
+
+    &--left{
+        left: -60px;
+        top: 33%;
+        transform: translateX(50%) rotate(90deg) translateY(50%) ;
+  
+    }
+
+    &--right{
+        right: -20px;
+        top: 33%;
+        transform: translateX(50%) rotate(270deg) translateY(50%);
+    }
+    &--scroll{
+       bottom: 50px;
+        left: 50%;
+        transform: translate(-50%, -50%); 
+    }
+
+    & a{
+        margin: 0 20px;
+        width: 41.5px;
+        height: 41.5px;
+        
+        display: inline-block;
+    }
+
+}
+
+.projects{
+    text-align: center;
+    &__title{
+        @include text($gray-title, $title, 4.4rem, 400, 1);
+        text-transform: uppercase;
+        &--line{
+            @include line($gray-title)
+        }
+    }
+    &__about{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        margin-bottom: 140px;
+        padding-top: 70px;
+
+        &--reverce{
+            flex-direction: row-reverse;
+        }
+
+    }
+    &__image{
+        width: 54%;
+        height: 470px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: -215px -70px 0 0 $blue;
+
+        &--reverce{
+            
+            box-shadow: 215px -70px 0 0 $purple;
+        }
+    }
+    &__foto{
+        
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+      
+    }
+    &__paper{
+        width: 41%;
+        text-align: left;
+        margin: auto 0;
+    }
+    &__subtitle{
+        @include text($gray-title, $subtitle, 2.2rem, 400, 1);
+        text-transform: uppercase;
+    }
+    &__info{
+        @include text($gray-title, $main-text, 1.8rem, 400, 1.6);
+        padding: 20px 0;
+        &--ital{
+            font-style: italic;
+            padding: 20px 0 0 0;
+        }
+    }
+
+}
+
+.btn{
+    display: block;
+    padding: 20px 40px;
+    background: $light-color;
+    border: 1px solid $gray-title;
+    text-transform: uppercase;
+    margin: 20px 0 40px;
+    @include text($gray-title, $subtitle, 1.4rem, 400, 1);
+    cursor: pointer;
+    @include hover{
+        background-color: $gray-title;
+        color: $light-color
+    }
+
+    &--center{
+        margin: 60px auto 40px;
+    }
+
+    &--right{
+        margin-left: auto;
+        margin-right: 0;
+    }
+}
+
+.news{
+    margin: 0 15px 210px;
+
+    &__post{
+        display: block;  
+        background: $light-color;
+        outline: none;
+        @include hover{
+            .news__title{
+                color: $blue;
+            }
+        }
+    }
+
+    &__image{
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+
+        &--240{
+            height: 240px;
+        }
+    }
+
+    &__img{
+        @include posCenter;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__img-hover{
+        @include posCenter;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        @include hover{
+            opacity: 1;
+        }
+    }
+
+    &__info{
+        padding: 30px 20px;
+    }
+
+    &__title{
+        margin: 0 0 12px;
+        
+        text-transform: uppercase;
+        overflow: hidden;
+        max-height: 6.4rem;
+        @include text($gray-title, $title, 2.2rem, 700, 1.5)
+    }
+
+    &__subtitle{
+        margin: 0;
+        overflow: hidden;
+        max-height: 6rem;
+        @include text($gray-text, $main-text, 1.8rem, 400, 1.7)
+    }
+
+    &__about {
+        padding: 0 20px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        outline: none;
+        
+        background-color: $light-color;
+        @include hover{
+            .news__name{
+                color: $purple;
+            }
+            .news__foto-img{
+                transform: scale(1.1
+                
+                );
+            }
+        }
+    }
+
+    &__foto-img{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 20px;
+    }
+
+    &__foto{
+        width: 100%;
+        height: 100%;
+    }
+
+    &__author{
+        max-width: calc( 100% - 90px );
+        
+
+    }
+
+    &__name{
+        @include text($gray-title, $title, 1.4rem, 400, 1.1);
+        text-transform: uppercase;
+        overflow: hidden;
+        
+        
+    }
+
+    &__data{
+        @include text($blue, $title, 1.4rem, 400, 1.4);
+        display: block;
+        overflow: hidden;
+    }
+}
+
+.gallery{
+    padding: 100px 60px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 215px);
+    grid-gap: 10px;
+    grid-auto-flow: dense;
+   
+    &-bg{
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+}
+
+.footer{
+    padding: 200px 0;
+
+    &__copyright{
+        margin-top: 40px;
+    }
+    
+    &__text {
+        padding-right: 55px;
+        @include text($light-color, $subtitle, 1.4rem, 400, 1.5);
+        &:last-child{
+            padding-left: 20px;
+            border-left: 1px solid $light-color
+        }
+        @include hover{
+            color: $gray-title;
+        }
+    }    
+}
+
+.map-contacts{
+    position: relative;
+}
+
+.map{
+    height: 90vh;
+    
+}
+
+.contacts{
+    background: $light-color;
+   position: absolute;
+   left: 50%;
+    bottom: -150px;
+    transform: translate(-50%, 0);
+    padding: 0 60px 35px;
+    z-index: 5;
+    box-shadow: 0 0 5px -3px $gray-text;
+    &__form{
+        display: flex;
+    }
+
+    &__info{
+        padding: 0;
+        margin: 0;
+        width: 50%;
+        margin-right: 20px;
+    }
+
+    &__item,
+    &__item a {
+        display: block;
+        padding-bottom: 40px;
+        @include text($gray-title, $subtitle, 1.8rem, 400, 1.5);
+    }
+
+    &__item a {
+        padding: 0;
+    }
+
+    &__item i{ 
+        color: $purple;
+    }
+    
+}
+
+.form{
+    width: 45%; 
+    
+    &__input{
+        outline: none;
+        border: none;
+        border-bottom: 1px solid $gray-title;
+        padding: 0 0 20px;
+        margin-bottom: 30px;
+        width: 100%;
+        @include text($gray-title, $subtitle, 1.8rem, 700, 1.1);
+        opacity: .5;
+        @include hover{
+            border-color: $gray-title;
+            opacity: 1;
+        }
+    }
+}

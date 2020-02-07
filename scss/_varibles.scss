@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i&display=swap');
+
+@font-face {
+    font-family: 'Gotham medium';
+    src: url('../fonts/gotham-medium/gotham-medium.ttf') format('ttf'),
+          url('../fonts/gotham-medium/gotham-medium.woff') format('woff'),
+         url('../fonts/gotham-medium/gotham-medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham book';
+    src: url('../fonts/gotham-book/gotham-book.eot');
+    src: url('../fonts/gotham-book/gotham-book.ttf') format('ttf'),
+         url('../fonts/gotham-book/gotham-book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham bold';
+    src: url('../fonts/gotham-bold/gothambold1.eot');
+    src: url('../fonts/gotham-bold.otf') format('otf'),
+        url('../fonts/gotham-bold/gothambold1.ttf') format('ttf'),
+         url('../fonts/gotham-bold/gothambold1.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+$light-color: #fff;
+$gray-title: #2c4058;
+$gray-text: #4b5562;
+$blue: #55b7ff;
+$purple: #7e5aff;
+
+$title: 'Gotham bold';
+$subtitle: 'Gotham book';
+$main-text: 'Open Sans';
+$text:'Gotham medium';
